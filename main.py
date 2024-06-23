@@ -11,7 +11,7 @@ load_dotenv(find_dotenv())
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
-headers = {"Authorization": "Bearer token"}
+headers = {"Authorization": "Bearer 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"}
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
