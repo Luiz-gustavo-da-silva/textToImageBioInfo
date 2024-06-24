@@ -35,12 +35,12 @@ def text2image(prompt: str):
 
 def main():
     st.set_page_config(page_title="Text2Image", page_icon="")
-    st.title("Text-to-Image Generator")
+    st.title("Gerador de textos")
     
     with st.form(key="my_form"):
         query = st.text_area(
-            label="Enter prompt for the image..",
-            help="Enter a prompt for the image here.",
+            label="Digite o texto para a criação da imagem..",
+            help="Texto para imagem aqui.",
             key="query",
             max_chars=50,
         )
@@ -48,10 +48,10 @@ def main():
         submit_button = st.form_submit_button(label="Submit")
  
     if query and submit_button:
-        with st.spinner(text="Generating image in progress..."):
+        with st.spinner(text="Gerando imagem..."):
             img_file = text2image(prompt=query)
             
-        st.subheader("Your Image")
+        st.subheader("Sua imagem:")
         st.image(f"./{img_file}", caption=query)
                 
 if __name__ == "__main__":
