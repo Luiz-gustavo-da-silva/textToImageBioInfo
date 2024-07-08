@@ -38,7 +38,7 @@ def main():
     st.title("Text-to-Image Generator")
 
     with st.form(key="my_form"):
-        query = st.text_area(
+        user_query = st.text_area(
             label="Enter prompt for the image..",
             help="Enter a prompt for the image here.",
             key="query",
@@ -47,13 +47,14 @@ def main():
 
         submit_button = st.form_submit_button(label="Submit")
 
-    if query and submit_button:
+    if user_query and submit_button:
+        prompt = user_query.strip()
         with st.spinner(text="Generating image in progress..."):
-            img_file = text2image(prompt=query)
+            img_file = text2image(prompt=prompt)
 
         if img_file:
             st.subheader("Your Image")
-            st.image(f"./{img_file}", caption=query)
+            st.image(f"./{img_file}", caption=prompt)
         else:
             st.error("Failed to generate image. Please try again later.")
 
