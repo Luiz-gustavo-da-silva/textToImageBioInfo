@@ -51,8 +51,11 @@ def main():
         with st.spinner(text="Generating image in progress..."):
             img_file = text2image(prompt=query)
 
-        st.subheader("Your Image")
-        st.image(f"./{img_file}", caption=query)
+        if img_file:
+            st.subheader("Your Image")
+            st.image(f"./{img_file}", caption=query)
+        else:
+            st.error("Failed to generate image. Please try again later.")
 
 if __name__ == "__main__":
     main()
