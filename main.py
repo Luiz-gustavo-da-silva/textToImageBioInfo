@@ -39,16 +39,20 @@ def main():
 
     with st.form(key="my_form"):
         query = st.text_area(
-            label="Digite o texto para a criação da imagem..",
-            help="Texto para imagem aqui.",
+            label="Enter prompt for the image..",
+            help="Enter a prompt for the image here.",
             key="query",
             max_chars=50,
         )
+
         submit_button = st.form_submit_button(label="Submit")
+
     if query and submit_button:
-        with st.spinner(text="Gerando imagem..."):
+        with st.spinner(text="Generating image in progress..."):
             img_file = text2image(prompt=query)
+
         st.subheader("Your Image")
         st.image(f"./{img_file}", caption=query)
+
 if __name__ == "__main__":
     main()
